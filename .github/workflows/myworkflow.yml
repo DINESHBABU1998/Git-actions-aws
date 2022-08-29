@@ -40,7 +40,7 @@ jobs:
 
       - name: Terraform initializing 
         id: init
-        run: terraform init
+        run: terraform init -reconfigure
         working-directory: ${{ env.tf_actions_working_dir }}
 
       - name: Terraform Validate
