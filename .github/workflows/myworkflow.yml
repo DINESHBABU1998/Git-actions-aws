@@ -58,3 +58,4 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
+        working-directory: ${{ env.tf_actions_working_dir }}
