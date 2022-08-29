@@ -43,6 +43,6 @@ jobs:
       - name: Terraform destroy 
         id: destroy
         run: terraform destroy -auto-approve
-        # working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: ${{ env.tf_actions_working_dir }}
       
 
