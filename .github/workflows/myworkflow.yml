@@ -34,7 +34,7 @@ jobs:
       
       - name: Terraform fmt
         id: fmt
-        run: terraform fmt -check
+        run: terraform fmt
         working-directory: ${{ env.tf_actions_working_dir }}
         continue-on-error: true  
 
