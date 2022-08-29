@@ -19,9 +19,10 @@ jobs:
         AWS_SESSION_TOKEN : ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_DEFAULT_REGION: us-east-2
 
-    defaults:
-      run:
-        working-directory: ${{ env.tf_actions_working_dir }}
+    # defaults:
+    #   run:
+    #     working-directory: ${{ env.tf_actions_working_dir }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3    
@@ -34,22 +35,22 @@ jobs:
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
-        # working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: ${{ env.tf_actions_working_dir }}
         continue-on-error: true  
 
       - name: Terraform initializing 
         id: init
         run: terraform init
-        # working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: ${{ env.tf_actions_working_dir }}
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        # working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: ${{ env.tf_actions_working_dir }}
 
       - name: Terraform plan
         id: plan
         if: github.event_name == 'push'
         run: terraform plan -no-color
-        # working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: ${{ env.tf_actions_working_dir }}
         continue-on-error: true
